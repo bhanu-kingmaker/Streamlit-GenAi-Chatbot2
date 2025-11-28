@@ -15,15 +15,10 @@ MODEL_OPTIONS = [
 
 selected_model = st.sidebar.selectbox("Choose Gemini model", MODEL_OPTIONS, index=0)
 
-
-
 st.session_state.setdefault("selected_model", selected_model)
 st.session_state["selected_model"] = selected_model
-st.session_state.setdefault("user_key", user_key)
-st.session_state["user_key"] = user_key
 
-
-
+# ❌ removed user_key lines because they cause NameError
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
@@ -48,5 +43,4 @@ if user_prompt:
 
     st.session_state.chat_history.append({"role": "assistant", "content": assistant_response})
     with st.chat_message("assistant"):
-
         st.markdown(assistant_response)
